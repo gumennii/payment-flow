@@ -40,16 +40,16 @@ export const AccordionItem = ({
     >
       <button
         onClick={toggleAccordion}
-        className='text-lg flex w-full flex-row items-center justify-between bg-inherit px-4 py-4 font-semibold hover:cursor-default'
+        className='text-[20px] flex w-full flex-row items-center justify-between bg-inherit px-4 py-4 font-bold hover:cursor-default'
       >
         <div
-          className={cn('flex w-[90%] text-start text-primary', {
+          className={cn('flex w-[90%] items-center text-start text-primary', {
             'text-muted': !isOpen,
           })}
         >
           <span
             className={cn(
-              'mr-3 flex h-6 w-6 items-center justify-center rounded-full bg-button text-white',
+              'mr-3 flex h-6 w-6 text-[16px] items-center justify-center rounded-full bg-button text-white',
               { 'bg-gray-200 text-input': !isOpen || showEdit },
               { 'bg-button text-white': showEdit && isOpen }
             )}

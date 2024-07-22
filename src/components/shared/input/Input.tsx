@@ -67,7 +67,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             value={inputValue}
             type={type}
             className={cn(
-              'focus-visible:ring-ring text-base file:text-lg h-[48px] w-full rounded-xl border border-input bg-white px-4 py-3 ring-offset-background file:bg-transparent file:font-medium placeholder:font-normal placeholder:text-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50',
+              'focus-visible:ring-ring text-base h-[48px] w-full rounded-xl border border-input bg-white px-4 py-3 ring-offset-background placeholder:text-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50',
               {
                 'border border-error text-error placeholder:text-error focus-visible:ring-0 focus-visible:ring-offset-0':
                   error,

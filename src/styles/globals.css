@@ -3,9 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 0, 0%, 0%;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --background: #f0f7ff;
+  --button: #3667e9;
+  --button-foreground: #2a50b9;
+  --error: #c34648;
+  --input: #6d7088;
+  --primary: #171731;
+  --primary-foreground: #14126d;
+  --muted: #65657b;
+  --muted-foreground: #e5e7eb;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,18 +25,13 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* UI components custom style classes */
+.button {
+  @apply block w-full rounded-xl bg-button px-4 py-3 text-center font-bold tracking-[0.2px] text-white shadow-sm hover:bg-button-foreground disabled:pointer-events-none disabled:bg-gray-200 disabled:text-primary-foreground;
 }

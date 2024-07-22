@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [Tailwind CSS](https://tailwindcss.com/)
 
 ## Getting Started
 
@@ -8,29 +8,46 @@ First, run the development server:
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load PlayFair Display font, which is a good replacement for Georgia font presented in Figma which requires licence.
 
-## Learn More
+## About Project
 
-To learn more about Next.js, take a look at the following resources:
+This project was meant to be completed in 3 hours, which is a pretty short time to execute all aspects of front-end development perfectly, including semantics, accessibility, performance, and so on. My main focus was recreating the Figma prototype and ensuring all styles and the user's state matched the initial designs.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Project is built using Typescript/Next.JS/TailwindCSS
+- ESlint and Prettier were added to keep code quality and consistency
+- Cypress is used for quick e2e tests
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+I followed the regular Next.JS file conventions with `/app,` `/components,` and other folders, each with its responsibilities.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`/app` - routing/pages
+`/components` - UI components specific per each page including layouts and shared UI components
+`/fonts` - defines additional custom fonts
+`/styles` - represents additional/global styles for the app
+`/utils` - shares utility/helper functions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## e2e Tests
+Project has a few basic Cypress tests to cover basic payment flow
+
+```bash
+# open tests
+npm run cy:open
+# run tests
+npm run cy:run
+```
+
+## Please note:
+
+1. `<Input />` component incldes labels and error messages and acts more as FormControl component. It was much faster to implement it this way to keep consistency, however if I had more time I would split it into smaller components and create a proper FormControl components to be integrated with forms
+2. I would've ask for Georgia font to replace Playfair if I had access to it
+3. I would've perform more testing using browserstack to ensure app looks great on other browsers/devices
+4. I would've use proper theme layer and organize CSS variables
+5. I was trying to ensure accesebility for the form, but there is more work can be done

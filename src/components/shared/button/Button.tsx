@@ -6,9 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const Button = (props: ButtonProps) => {
-  const { className, text, onClick } = props;
-
+export const Button = ({ className, text, onClick, ...props }: ButtonProps) => {
   return (
     <button {...props} onClick={onClick} className={cn('button', className)}>
       {text}

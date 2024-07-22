@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useCallback, ReactNode } from 'react';
+import { useCallback, ReactNode } from 'react';
 import cn from '@/utils/cn';
 
 type AccordionItemProps = {
@@ -11,11 +11,10 @@ type AccordionItemProps = {
   isOpen?: boolean;
   onClick?: (id: string) => void;
   number: string;
-  isDisable?: boolean;
-  isFilled?: boolean;
+  showEdit?: boolean;
 };
 
-export const AccordionItem: FC<AccordionItemProps> = ({
+export const AccordionItem = ({
   title,
   children,
   id,
@@ -23,9 +22,8 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   isOpen = false,
   onClick = () => null,
   number,
-  isDisable = false,
-  isFilled = false,
-}) => {
+  showEdit = false,
+}: AccordionItemProps) => {
   const toggleAccordion = useCallback(() => {
     if (onClick) {
       onClick(id);
@@ -46,14 +44,14 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       >
         <div
           className={cn('flex w-[90%] text-start text-primary', {
-            'text-muted': isDisable,
+            'text-muted': !isOpen,
           })}
         >
           <span
             className={cn(
               'mr-3 flex h-6 w-6 items-center justify-center rounded-full bg-button text-white',
-              { 'bg-gray-200 text-input': isDisable || isFilled },
-              { 'bg-button text-white': isFilled && isOpen }
+              { 'bg-gray-200 text-input': !isOpen || showEdit },
+              { 'bg-button text-white': showEdit && isOpen }
             )}
           >
             {number}
@@ -61,10 +59,10 @@ export const AccordionItem: FC<AccordionItemProps> = ({
           {title}
         </div>
         <div
-          className='flex items-center text-[14px] text-button'
+          className='flex items-center text-[14px] text-button hover:cursor-pointer'
           onClick={() => onClick}
         >
-          {isFilled && !isOpen ? 'Edit' : null}
+          {showEdit && !isOpen ? 'Edit' : null}
         </div>
       </button>
       <div

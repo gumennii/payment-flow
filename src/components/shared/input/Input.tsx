@@ -7,10 +7,12 @@ import { AlertCircleIcon, CheckIcon } from '@/components/shared/icons';
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  id?: string;
   error?: string;
   placeholder?: string;
   value?: string;
   cardZipCode?: boolean;
+  formatDate?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -19,18 +21,30 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       type,
       label,
+      id,
       error,
       placeholder,
       value,
       cardZipCode = false,
+      formatDate = false,
       ...props
     },
     ref
   ) => {
     let inputValue = value;
 
+    const formatData = (input: string) => {
+      const cleanedInput = input.replace(/\D/g, '');
+      const formattedInput = cleanedInput.replace(/(\d{2})(\d{2})/, '$1/$2');
+      return formattedInput;
+    };
+
     if (cardZipCode && value) {
       inputValue = value.toString().replace(/\D/g, '');
+    }
+
+    if (formatDate && value) {
+      inputValue = formatData(value);
     }
 
     return (
@@ -42,7 +56,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       >
         {label && (
           <label
-            htmlFor={label}
+            htmlFor={id}
             className='text-[14px] font-bold tracking-[0.2px] text-muted'
           >
             {label}
@@ -60,6 +74,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               }
             )}
             placeholder={placeholder}
+            id={id}
             ref={ref}
             {...props}
           />
